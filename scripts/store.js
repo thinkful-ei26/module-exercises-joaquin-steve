@@ -8,14 +8,8 @@ const store = (function() {
 
   const addItem = function(name) {
     try {
-<<<<<<< HEAD
-      Item.validateName(name)
-      this.items.push(Item.create(name))
-      console.log('adding item')
-=======
       Item.validateName(name);
       this.items.push(Item.create(name));
->>>>>>> 70368952fa4b3ea6f124a285e8cc8ef586059df8
     } catch (error) {
       console.log('cant add item ' + error.message);
     }
@@ -45,6 +39,14 @@ const store = (function() {
     return this.items.filter(item => item.id !== id);
     // console.log('find and delete running!');
   };
+
+  const toggleCheckedFilter = function(id) {
+    this.findById(element => {
+      element.hideCheckedItems = !element.hideCheckedItems; //check this
+    });
+  };
+
+  const setSearchTerm = function() {};
 
   return {
     items,
