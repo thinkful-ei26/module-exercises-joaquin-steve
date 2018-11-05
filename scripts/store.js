@@ -1,14 +1,18 @@
 /*eslint-env jquery*/
-'use strict';
+'use strict'
 
 const store = (function() {
-  const foo = 'bar';
-  const items = [];
-  let hideCheckedItems = false;
+  const foo = 'bar'
+  const items = []
+  let hideCheckedItems = false
 
-  const addItem = function(itemName) {};
-  const updateItem = function(id, updateData) {};
-  const toggleHideCheckedFilter = function() {};
+  const addItem = function(itemName) {}
+  const updateItem = function(id, updateData) {}
+  const toggleHideCheckedFilter = function() {}
+
+  const findById = function(id) {
+    return items.find(id)
+  }
 
   return {
     items,
@@ -16,5 +20,5 @@ const store = (function() {
     addItem,
     updateItem,
     toggleHideCheckedFilter
-  };
-})();
+  }
+})()
