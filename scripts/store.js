@@ -1,4 +1,5 @@
 /*eslint-env jquery*/
+/* global Item */
 'use strict';
 
 const store = (function() {
