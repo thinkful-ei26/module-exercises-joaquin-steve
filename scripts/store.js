@@ -22,9 +22,9 @@ const store = (function() {
   const updateItem = function(id, updateData) {};
   const toggleHideCheckedFilter = function() {};
 
-  function findBy(id) {
-    id.find(element => element.id);
-  }
+  const findById = function(id) {
+    return items.find(id);
+  };
 
   return {
     items,
