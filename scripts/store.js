@@ -7,8 +7,9 @@ const store = (function() {
 
   const addItem = function(name) {
     try {
-      this.items.httvalidateName(name)
-      this.items.push(name.create(name))
+      Item.validateName(name)
+      this.items.push(Item.create(name))
+      console.log('adding item')
     } catch (error) {
       console.log('cant add item ' + error.message)
     }
