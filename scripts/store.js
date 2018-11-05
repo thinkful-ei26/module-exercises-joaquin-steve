@@ -2,7 +2,6 @@
 'use strict'
 
 const store = (function() {
-  const foo = 'bar'
   const items = []
   let hideCheckedItems = false
 
@@ -42,6 +41,7 @@ const store = (function() {
     updateItem,
     toggleHideCheckedFilter,
     findAndUpdateName,
-    findById
+    findById,
+    findAndToggleChecked
   }
 })()
