@@ -1,7 +1,8 @@
 /*eslint-env jquery*/
 'use strict';
-const foo = 'bar';
+
 const store = (function() {
+  const foo = 'bar';
   const items = [];
   let hideCheckedItems = false;
 

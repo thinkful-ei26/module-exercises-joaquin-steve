@@ -1,3 +1,6 @@
+/*eslint-env jquery*/
+'use strict';
+
 /* global shoppingList, cuid */
 
 // eslint-disable-next-line no-unused-vars
@@ -7,6 +10,5 @@ $(document).ready(function() {
   shoppingList.render();
 });
 
-
-console.log(store);
+console.log(Item);
 console.log(foo);
