@@ -117,7 +117,7 @@ const shoppingList = (function() {
 
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
-      store.findAndToggleChecked(getItemIdFromElement(event.currentTarget));
+      store.toggleCheckedFilter();
       render();
     });
   }
