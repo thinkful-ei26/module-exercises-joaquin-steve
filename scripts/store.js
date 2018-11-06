@@ -3,31 +3,28 @@
 'use strict';
 
 const store = (function() {
-  const items = [];
+  const items = [
+    { id: cuid(), name: 'apples', checked: false },
+    { id: cuid(), name: 'oranges', checked: false },
+    { id: cuid(), name: 'milk', checked: true },
+    { id: cuid(), name: 'bread', checked: false }
+  ];
   let hideCheckedItems = false;
+  const searchTerm = null;
 
   const addItem = function(name) {
     try {
-<<<<<<< HEAD
-      Item.validateName(name)
-      this.items.push(Item.create(name))
-      console.log('adding item')
-=======
       Item.validateName(name);
       this.items.push(Item.create(name));
->>>>>>> 70368952fa4b3ea6f124a285e8cc8ef586059df8
     } catch (error) {
       console.log('cant add item ' + error.message);
     }
+    shoppingList.render();
   };
   const findAndToggleChecked = function(id) {
-    this.findById(element => {
-      element.checked = !element.checked;
-    });
+    let item = this.findById(id);
+    item.checked = !item.checked;
   };
-  const updateItem = function(id, updateData) {};
-  const toggleHideCheckedFilter = function() {};
-
   const findById = function(id) {
     return this.items.find(element => element.id === id);
   };
@@ -42,19 +39,30 @@ const store = (function() {
   };
 
   const findAndDelete = function(id) {
-    return this.items.filter(item => item.id !== id);
+    let index = this.items.findIndex(element => {
+      element.id === id;
+    });
+    this.items.splice(index, 1);
+
     // console.log('find and delete running!');
   };
 
+  const toggleCheckedFilter = function() {
+    this.hideCheckedItems = !this.hideCheckedItems;
+  };
+
+  function setSearchTerm(searchTerm) {
+    this.searchTerm = searchTerm;
+  }
   return {
     items,
     hideCheckedItems,
     addItem,
-    updateItem,
-    toggleHideCheckedFilter,
     findAndUpdateName,
     findById,
     findAndToggleChecked,
-    findAndDelete
+    findAndDelete,
+    toggleCheckedFilter,
+    setSearchTerm
   };
 })();
