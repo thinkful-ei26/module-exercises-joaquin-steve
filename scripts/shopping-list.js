@@ -1,6 +1,6 @@
 /*eslint-env jquery*/
 'use strict';
-/* global store, Item cuid */
+/* global Store, Item cuid */
 
 // eslint-disable-next-line no-unused-vars
 const shoppingList = (function() {
@@ -36,15 +36,15 @@ const shoppingList = (function() {
   }
 
   function render() {
-    // Filter item list if store prop is true by item.checked === false
-    let items = store.items;
-    if (store.hideCheckedItems) {
-      items = store.items.filter(item => !item.checked);
+    // Filter item list if Store prop is true by item.checked === false
+    let items = Store.items;
+    if (Store.hideCheckedItems) {
+      items = Store.items.filter(item => !item.checked);
     }
 
-    // Filter item list if store prop `searchTerm` is not empty
-    if (store.searchTerm) {
-      items = store.items.filter(item => item.name.includes(store.searchTerm));
+    // Filter item list if Store prop `searchTerm` is not empty
+    if (Store.searchTerm) {
+      items = Store.items.filter(item => item.name.includes(Store.searchTerm));
     }
 
     // render the shopping list in the DOM
@@ -65,7 +65,7 @@ const shoppingList = (function() {
     $('#js-shopping-list-form').submit(function(event) {
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
-      store.addItem(newItemName);
+      Store.addItem(newItemName);
       render();
     });
   }
@@ -73,22 +73,22 @@ const shoppingList = (function() {
   function handleItemCheckClicked() {
     $('.js-shopping-list').on('click', '.js-item-toggle', event => {
       const id = getItemIdFromElement(event.currentTarget);
-      store.findAndToggleChecked(id);
+      Store.findAndToggleChecked(id);
       render();
     });
   }
 
   function setSearchTerm(val) {
-    store.searchTerm = val;
+    Store.searchTerm = val;
   }
 
   function handleDeleteItemClicked() {
     // like in `handleItemCheckClicked`, we use event delegation
     $('.js-shopping-list').on('click', '.js-item-delete', event => {
-      // get the index of the item in store.items
+      // get the index of the item in Store.items
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
-      store.findAndDelete(id);
+      Store.findAndDelete(id);
       // render the updated shopping list
       render();
     });
@@ -101,14 +101,14 @@ const shoppingList = (function() {
       const itemName = $(event.currentTarget)
         .find('.shopping-item')
         .val();
-      store.findAndUpdateName(id, itemName);
+      Store.findAndUpdateName(id, itemName);
       render();
     });
   }
 
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
-      store.toggleCheckedFilter();
+      Store.toggleCheckedFilter();
       render();
     });
   }
