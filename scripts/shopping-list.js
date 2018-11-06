@@ -1,7 +1,6 @@
 /*eslint-env jquery*/
 'use strict';
-
-/* global store, cuid */
+/* global store, Item cuid */
 
 // eslint-disable-next-line no-unused-vars
 const shoppingList = (function() {
@@ -72,10 +71,11 @@ const shoppingList = (function() {
   }
 
   function handleNewItemSubmit() {
-    $('#js-shopping-list-form').submit(function(event) {
+    $('#js-shopping-list-form').submit(function (event) {
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
-      addItemToShoppingList(newItemName);
+      // $('.js-shopping-list-entry').val('');
+      store.addItem(newItemName);
       render();
     });
   }
@@ -98,7 +98,11 @@ const shoppingList = (function() {
       // get the index of the item in store.items
       const id = getItemIdFromElement(event.currentTarget);
       // delete the item
+<<<<<<< HEAD
       store.findAndDelete(id);
+=======
+      store.deleteListItem(id);
+>>>>>>> 3a6f8cb26dd62631b5a08bca96026c1584ee3f37
       // render the updated shopping list
       render();
     });
@@ -118,7 +122,11 @@ const shoppingList = (function() {
 
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
+<<<<<<< HEAD
       store.findAndToggleChecked(getItemIdFromElement(event.currentTarget));
+=======
+      toggleCheckedItemsFilter();
+>>>>>>> 3a6f8cb26dd62631b5a08bca96026c1584ee3f37
       render();
     });
   }
