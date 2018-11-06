@@ -60,15 +60,6 @@ const shoppingList = (function() {
       .closest('.js-item-element')
       .data('item-id');
   }
-  function addItemToShoppingList(itemName) {
-    try {
-      Item.validateName(itemName);
-      store.addItem(name);
-    } catch (error) {
-      console.log('cant add item ' + error.message);
-    }
-    shoppingList.render();
-  }
 
   function handleNewItemSubmit() {
     $('#js-shopping-list-form').submit(function(event) {
