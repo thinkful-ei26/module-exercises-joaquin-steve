@@ -44,7 +44,7 @@ const Store = (function() {
     });
     this.items.splice(index, 1);
 
-    // console.log('find and delete running!');
+    console.log('Theres an error deleting by the wrong index');
   };
 
   const toggleCheckedFilter = function() {
